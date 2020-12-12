@@ -1,13 +1,13 @@
 # Laravel Sail
 
-<a href="https://packagist.org/packages/laravel/sail">
-    <img src="https://img.shields.io/packagist/dt/laravel/sail" alt="Total Downloads">
+<a href="https://packagist.org/packages/oddvalue/sail">
+    <img src="https://img.shields.io/packagist/dt/oddvalue/sail" alt="Total Downloads">
 </a>
-<a href="https://packagist.org/packages/laravel/sail">
-    <img src="https://img.shields.io/packagist/v/laravel/sail" alt="Latest Stable Version">
+<a href="https://packagist.org/packages/oddvalue/sail">
+    <img src="https://img.shields.io/packagist/v/oddvalue/sail" alt="Latest Stable Version">
 </a>
-<a href="https://packagist.org/packages/laravel/sail">
-    <img src="https://img.shields.io/packagist/l/laravel/sail" alt="License">
+<a href="https://packagist.org/packages/oddvalue/sail">
+    <img src="https://img.shields.io/packagist/l/oddvalue/sail" alt="License">
 </a>
 
 ## Introduction
