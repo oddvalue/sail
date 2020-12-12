@@ -1,6 +1,5 @@
 <b style="color: red">Fork of https://github.com/laravel/sail to allow use on L5/6/7 with PHP 7.0 & 7.3, unless you need that use the original package</b>
 
-
 <p align="center"><img src="/art/logo.svg" alt="Logo Laravel Sail"></p>
 
 <p align="center">
