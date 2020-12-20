@@ -14,6 +14,8 @@ esac
 
 if [ "$MACHINE" == "UNKNOWN" ]; then
     echo "Unsupported operating system [$(uname -s)]. Laravel Sail supports macOS, Linux, and Windows (WSL2)."
+    
+    exit 1
 fi
 
 # Define environment variables...
@@ -170,6 +172,19 @@ if [ $# -gt 0 ]; then
             sail_is_not_running
         fi
 
+    # Proxy NPX commands to the "npx" binary on the application container...
+    elif [ "$1" == "npx" ]; then
+        shift 1
+
+        if [ "$EXEC" == "yes" ]; then
+            docker-compose exec \
+                -u sail \
+                "$APP_SERVICE" \
+                npx "$@"
+        else
+            sail_is_not_running
+        fi
+
     # Initiate a MySQL CLI terminal session within the "mysql" container...
     elif [ "$1" == "mysql" ]; then
         shift 1
@@ -177,7 +192,7 @@ if [ $# -gt 0 ]; then
         if [ "$EXEC" == "yes" ]; then
             docker-compose exec \
                 mysql \
-                bash -c "MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysql -u root ${MYSQL_DATABASE}"
+                bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysql -u ${MYSQL_USER} ${MYSQL_DATABASE}'
         else
             sail_is_not_running
         fi
