@@ -23,7 +23,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Laravel\\Sail\\": "src/"
+            "Oddvalue\\Sail\\": "src/"
         }
     },
     "extra": {
@@ -32,7 +32,7 @@
         },
         "laravel": {
             "providers": [
-                "Laravel\\Sail\\SailServiceProvider"
+                "Oddvalue\\Sail\\SailServiceProvider"
             ]
         }
     },

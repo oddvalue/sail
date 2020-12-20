@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Sail\Console;
+namespace Oddvalue\Sail\Console;
 
 use Illuminate\Console\Command;
 

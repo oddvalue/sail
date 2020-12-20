@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Sail;
+namespace Oddvalue\Sail;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
@@ -8,8 +8,8 @@ use Illuminate\Support\ServiceProvider;
 class SailServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        \Laravel\Sail\Console\SailInstall::class,
-        \Laravel\Sail\Console\SailPublish::class,
+        \Oddvalue\Sail\Console\SailInstall::class,
+        \Oddvalue\Sail\Console\SailPublish::class,
     ];
 
     /**
