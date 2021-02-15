@@ -1,17 +1,19 @@
 <b style="color: red">Fork of https://github.com/laravel/sail to allow use on L5/6/7 with PHP 7.0 & 7.3, unless you need that use the original package</b>
 
 
-# Laravel Sail
+<p align="center"><img src="/art/logo.svg" alt="Logo Laravel Sail"></p>
 
-<a href="https://packagist.org/packages/oddvalue/sail">
-    <img src="https://img.shields.io/packagist/dt/oddvalue/sail" alt="Total Downloads">
-</a>
-<a href="https://packagist.org/packages/oddvalue/sail">
-    <img src="https://img.shields.io/packagist/v/oddvalue/sail" alt="Latest Stable Version">
-</a>
-<a href="https://packagist.org/packages/oddvalue/sail">
-    <img src="https://img.shields.io/packagist/l/oddvalue/sail" alt="License">
-</a>
+<p align="center">
+    <a href="https://packagist.org/packages/oddvalue/sail">
+        <img src="https://img.shields.io/packagist/dt/oddvalue/sail" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/oddvalue/sail">
+        <img src="https://img.shields.io/packagist/v/oddvalue/sail" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/oddvalue/sail">
+        <img src="https://img.shields.io/packagist/l/oddvalue/sail" alt="License">
+    </a>
+</p>
 
 ## Introduction
 
