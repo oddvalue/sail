@@ -27,24 +27,24 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        // if ($this->option('runtime')) {
-        //     $runtime = $this->option('runtime');
-        // } elseif ($this->option('no-interaction')) {
-        //     $runtime = '8.0';
-        // } else {
-        //     $runtime = $this->chooseRuntimeWithSymfonyMenu();
-        // }
+        if ($this->option('runtime')) {
+            $runtime = $this->option('runtime');
+        } elseif ($this->option('no-interaction')) {
+            $runtime = '8.0';
+        } else {
+            $runtime = $this->chooseRuntimeWithSymfonyMenu();
+        }
 
-        // if ($this->option('services')) {
-        //     $services = $this->option('services') == 'none' ? [] : explode(',', $this->option('services'));
-        // } elseif ($this->option('no-interaction')) {
-        //     $services = ['mysql', 'redis', 'selenium', 'mailhog'];
-        // } else {
-        //     $services = $this->gatherServicesWithSymfonyMenu();
-        // }
+        if ($this->option('services')) {
+            $services = $this->option('services') == 'none' ? [] : explode(',', $this->option('services'));
+        } elseif ($this->option('no-interaction')) {
+            $services = ['mysql', 'redis', 'selenium', 'mailhog'];
+        } else {
+            $services = $this->gatherServicesWithSymfonyMenu();
+        }
 
-        $runtime = '8.0';
-        $services = ['mysql', 'redis', 'selenium', 'mailhog'];
+        // $runtime = '8.0';
+        // $services = ['mysql', 'redis', 'selenium', 'mailhog'];
 
         $this->buildDockerCompose($runtime, $services);
         $this->replaceEnvVariables($services);
