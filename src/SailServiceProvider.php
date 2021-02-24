@@ -2,16 +2,13 @@
 
 namespace Oddvalue\Sail;
 
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Sail\Console\InstallCommand;
+use Laravel\Sail\Console\PublishCommand;
 
 class SailServiceProvider extends ServiceProvider
 {
-    protected $commands = [
-        \Oddvalue\Sail\Console\SailInstall::class,
-        \Oddvalue\Sail\Console\SailPublish::class,
-    ];
-
     /**
      * Bootstrap any application services.
      *
@@ -19,10 +16,8 @@ class SailServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->registerCommands();
-            $this->configurePublishing();
-        }
+        $this->registerCommands();
+        $this->configurePublishing();
     }
 
     public function register()
@@ -37,7 +32,12 @@ class SailServiceProvider extends ServiceProvider
      */
     protected function registerCommands()
     {
-        $this->commands($this->commands);
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+                PublishCommand::class,
+            ]);
+        }
     }
 
     /**
@@ -47,9 +47,11 @@ class SailServiceProvider extends ServiceProvider
      */
     protected function configurePublishing()
     {
-        $this->publishes([
-            __DIR__.'/../runtimes' => base_path('docker'),
-        ], 'sail');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../runtimes' => $this->app->basePath('docker'),
+            ], 'sail');
+        }
     }
 
     /**
@@ -60,8 +62,8 @@ class SailServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'sail.install-command',
-            'sail.publish-command',
+            InstallCommand::class,
+            PublishCommand::class,
         ];
     }
 }
