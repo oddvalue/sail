@@ -4,8 +4,8 @@ namespace Oddvalue\Sail;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Sail\Console\InstallCommand;
-use Laravel\Sail\Console\PublishCommand;
+use Oddvalue\Sail\Console\InstallCommand;
+use Oddvalue\Sail\Console\PublishCommand;
 
 class SailServiceProvider extends ServiceProvider
 {
