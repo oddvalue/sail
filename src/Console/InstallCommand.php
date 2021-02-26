@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Sail\Console;
+namespace Oddvalue\Sail\Console;
 
 use Illuminate\Console\Command;
 
@@ -43,9 +43,6 @@ class InstallCommand extends Command
             $services = $this->gatherServicesWithSymfonyMenu();
         }
 
-        // $runtime = '8.0';
-        // $services = ['mysql', 'redis', 'selenium', 'mailhog'];
-
         $this->buildDockerCompose($runtime, $services);
         $this->replaceEnvVariables($services);
 
@@ -76,16 +73,14 @@ class InstallCommand extends Command
      */
     protected function chooseRuntimeWithSymfonyMenu()
     {
-        $availableRuntimes = array_map(
+        $availableRuntimes = array_reverse(array_map(
             'basename',
             glob(__DIR__.'/../../runtimes/*', GLOB_ONLYDIR)
-        );
+        ));
         return $this->choice(
             'Which runtime would you like to use?',
             $availableRuntimes,
-            0,
-            null,
-            true
+            0
         );
     }
 
