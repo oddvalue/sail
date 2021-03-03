@@ -3,6 +3,7 @@
 namespace Oddvalue\Sail\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
 
 class InstallCommand extends Command
 {
@@ -94,6 +95,14 @@ class InstallCommand extends Command
      */
     protected function buildDockerCompose(string $runtime, array $services)
     {
+        if (!method_exists('whenNotEmpty', collect())) {
+            Collection::macro('whenNotEmpty', function ($callback) {
+                if ($this->isEmpty()) {
+                    return $this;
+                }
+                return $callback($this);
+            });
+        }
         $depends = collect($services)
             ->filter(function ($service) {
                 return in_array($service, ['mysql', 'pgsql', 'redis', 'selenium']);
@@ -126,7 +135,7 @@ class InstallCommand extends Command
         // Remove empty lines...
         $dockerCompose = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $dockerCompose);
 
-        file_put_contents($this->laravel->basePath('docker-compose.yml'), $dockerCompose);
+        file_put_contents($this->laravel->basePath().'/docker-compose.yml', $dockerCompose);
     }
 
     /**
@@ -137,7 +146,7 @@ class InstallCommand extends Command
      */
     protected function replaceEnvVariables(array $services)
     {
-        $environment = file_get_contents($this->laravel->basePath('.env'));
+        $environment = file_get_contents($this->laravel->basePath().'/.env');
 
         $host = in_array('pgsql', $services) ? 'pgsql' : 'mysql';
 
@@ -150,6 +159,6 @@ class InstallCommand extends Command
             $environment .= "\nMEILISEARCH_HOST=http://meilisearch:7700\n";
         }
 
-        file_put_contents($this->laravel->basePath('.env'), $environment);
+        file_put_contents($this->laravel->basePath().'/.env', $environment);
     }
 }

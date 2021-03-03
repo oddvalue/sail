@@ -30,7 +30,7 @@ class PublishCommand extends Command
         $this->call('vendor:publish', ['--tag' => 'sail']);
 
         file_put_contents($this->laravel->basePath('docker-compose.yml'), str_replace(
-            './vendor/laravel/sail/runtimes',
+            './vendor/oddvalue/sail/runtimes',
             './docker',
             file_get_contents($this->laravel->basePath('docker-compose.yml'))
         ));
