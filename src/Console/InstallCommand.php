@@ -36,8 +36,8 @@ class InstallCommand extends Command
             $runtime = $this->chooseRuntimeWithSymfonyMenu();
         }
 
-        if ($this->option('services')) {
-            $services = $this->option('services') == 'none' ? [] : explode(',', $this->option('services'));
+        if ($this->option('with')) {
+            $services = $this->option('with') == 'none' ? [] : explode(',', $this->option('with'));
         } elseif ($this->option('no-interaction')) {
             $services = ['mysql', 'redis', 'selenium', 'mailhog'];
         } else {
