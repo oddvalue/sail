@@ -11,8 +11,9 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'sail:install {--services= : The services that should be included in the installation}';
-
+    protected $signature = 'sail:install
+                            {--runtime= : The PHP runtime to use}
+                            {--with= : The services that should be included in the installation}';
     /**
      * The console command description.
      *
