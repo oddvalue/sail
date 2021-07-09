@@ -26,7 +26,7 @@ RUN apt-get update \
        php7.0-xml php7.0-zip php7.0-bcmath php7.0-soap \
        php7.0-intl php7.0-readline \
        php7.0-msgpack php7.0-igbinary php7.0-ldap \
-       php7.0-redis \
+       php7.0-redis php7.0-mcrypt \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && curl -sL https://deb.nodesource.com/setup_15.x | bash - \
     && apt-get install -y nodejs \
