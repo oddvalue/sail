@@ -25,9 +25,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-php56": "0.0-dev"
-        },
         "laravel": {
             "providers": [
                 "Oddvalue\\Sail\\SailServiceProvider"
