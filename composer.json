@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": "^5.6"
+        "php": "^5.6|^7.0"
     },
     "bin": [
         "bin/sail"
@@ -26,7 +26,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-php56": "php56"
+            "dev-php56": "php56-dev"
         },
         "laravel": {
             "providers": [
